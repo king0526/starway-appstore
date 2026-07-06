@@ -1,0 +1,23 @@
+{
+  "name": "Hermes Agent",
+  "id": "hermes",
+  "available": false,
+  "short_desc": "Hermes AI agent tool, delivered as a browser terminal (PLACEHOLDER — set real image).",
+  "author": "Starway",
+  "port": 7682,
+  "categories": [
+    "ai",
+    "development"
+  ],
+  "description": "PLACEHOLDER ENTRY. Hermes is an AI agent tool to be packaged for the Starway store. If it exposes a web UI, replace this with a normal service + internal_port. If it is a CLI, wrap it with a ttyd web terminal (see openclaw). To enable: set the real `image:`, flip `available` to true, and bump `tipi_version`.",
+  "tipi_version": 1,
+  "version": "0.0.0",
+  "source": "https://github.com/starclaw/hermes",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "dynamic_config": true,
+  "form_fields": []
+}

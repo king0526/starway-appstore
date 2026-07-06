@@ -1,0 +1,39 @@
+{
+  "name": "Flowise",
+  "id": "flowise",
+  "available": true,
+  "short_desc": "Drag-and-drop builder for LLM apps and AI agents (LangChain-based).",
+  "author": "FlowiseAI",
+  "port": 3000,
+  "categories": [
+    "ai",
+    "development",
+    "automation"
+  ],
+  "description": "Flowise is an open-source low-code tool to build customized LLM orchestration flows and AI agents. Visually chain LLMs, tools, memory and vector stores, then expose them as APIs. Data is persisted to the app data directory.",
+  "tipi_version": 1,
+  "version": "2.2.2",
+  "source": "https://github.com/FlowiseAI/Flowise",
+  "website": "https://flowiseai.com",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "dynamic_config": true,
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Admin username",
+      "env_variable": "FLOWISE_USERNAME",
+      "required": true
+    },
+    {
+      "type": "password",
+      "label": "Admin password",
+      "env_variable": "FLOWISE_PASSWORD",
+      "min": 8,
+      "required": true
+    }
+  ]
+}

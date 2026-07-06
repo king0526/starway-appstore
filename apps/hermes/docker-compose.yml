@@ -1,0 +1,13 @@
+# TODO(starway): replace with the real Hermes image and set config.json.available = true.
+# If Hermes has a web UI, use its real port as internal_port.
+# If Hermes is a CLI, wrap it with ttyd like the openclaw app (port 7681/7682).
+services:
+  hermes:
+    image: 'REPLACE_ME.aliyuncs.com/starway/hermes:latest'
+    x-runtipi:
+      is_main: true
+      internal_port: '7682'
+    volumes:
+      - ${APP_DATA_DIR}/data:/data
+x-runtipi:
+  schema_version: 2

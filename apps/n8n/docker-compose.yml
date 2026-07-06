@@ -1,0 +1,16 @@
+services:
+  n8n:
+    image: 'docker.n8n.io/n8nio/n8n:1.60.1'
+    x-runtipi:
+      is_main: true
+      internal_port: '5678'
+    environment:
+      - N8N_PORT=5678
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - GENERIC_TIMEZONE=Asia/Shanghai
+      - TZ=Asia/Shanghai
+      - N8N_DIAGNOSTICS_ENABLED=false
+    volumes:
+      - ${APP_DATA_DIR}/data/.n8n:/home/node/.n8n
+x-runtipi:
+  schema_version: 2

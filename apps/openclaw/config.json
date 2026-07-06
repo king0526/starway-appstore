@@ -1,0 +1,23 @@
+{
+  "name": "OpenClaw Agent",
+  "id": "openclaw",
+  "available": false,
+  "short_desc": "OpenClaw CLI coding agent, delivered as a browser terminal (PLACEHOLDER — set real image).",
+  "author": "Starway",
+  "port": 7681,
+  "categories": [
+    "ai",
+    "development"
+  ],
+  "description": "PLACEHOLDER ENTRY. OpenClaw is a CLI coding agent (not a native web app), so it is packaged as a container running the CLI behind a ttyd web terminal. To enable: build the image (CLI + ttyd) and push it to your Aliyun ACR, then set `image:` in docker-compose.yml, flip `available` to true, and bump `tipi_version`. See the repo README for the wrapper Dockerfile pattern.",
+  "tipi_version": 1,
+  "version": "0.0.0",
+  "source": "https://github.com/starclaw/openclaw",
+  "exposable": true,
+  "supported_architectures": [
+    "arm64",
+    "amd64"
+  ],
+  "dynamic_config": true,
+  "form_fields": []
+}

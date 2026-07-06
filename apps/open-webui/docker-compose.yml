@@ -1,0 +1,13 @@
+services:
+  open-webui:
+    image: 'ghcr.io/open-webui/open-webui:0.3.35'
+    x-runtipi:
+      is_main: true
+      internal_port: '8080'
+    environment:
+      - WEBUI_SECRET_KEY=${WEBUI_SECRET_KEY}
+      - ENABLE_SIGNUP=true
+    volumes:
+      - ${APP_DATA_DIR}/data:/app/backend/data
+x-runtipi:
+  schema_version: 2
