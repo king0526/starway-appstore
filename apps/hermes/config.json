@@ -1,23 +1,38 @@
 {
   "name": "Hermes Agent",
   "id": "hermes",
-  "available": false,
-  "short_desc": "Hermes AI agent tool, delivered as a browser terminal (PLACEHOLDER — set real image).",
-  "author": "Starway",
-  "port": 7682,
+  "available": true,
+  "short_desc": "Nous Research Hermes — personal AI agent with a web dashboard (chat, skills, MCP).",
+  "author": "Nous Research",
+  "port": 9119,
   "categories": [
-    "ai",
-    "development"
+    "ai"
   ],
-  "description": "PLACEHOLDER ENTRY. Hermes is an AI agent tool to be packaged for the Starway store. If it exposes a web UI, replace this with a normal service + internal_port. If it is a CLI, wrap it with a ttyd web terminal (see openclaw). To enable: set the real `image:`, flip `available` to true, and bump `tipi_version`.",
+  "description": "Hermes is Nous Research's AI agent. This app runs its web dashboard — chat, skills, sessions, MCP servers and usage insights. Set an admin username/password at install; the dashboard is protected by basic auth (Hermes refuses a public bind without it). After install, open the dashboard and configure your model provider / API keys.",
   "tipi_version": 1,
-  "version": "0.0.0",
-  "source": "https://github.com/starclaw/hermes",
+  "version": "latest",
+  "source": "https://github.com/NousResearch",
+  "website": "https://nousresearch.com",
   "exposable": true,
   "supported_architectures": [
-    "arm64",
-    "amd64"
+    "amd64",
+    "arm64"
   ],
   "dynamic_config": true,
-  "form_fields": []
+  "form_fields": [
+    {
+      "type": "text",
+      "label": "Dashboard admin username",
+      "env_variable": "HERMES_DASHBOARD_BASIC_AUTH_USERNAME",
+      "default": "admin",
+      "required": true
+    },
+    {
+      "type": "password",
+      "label": "Dashboard admin password (min 8 chars)",
+      "env_variable": "HERMES_DASHBOARD_BASIC_AUTH_PASSWORD",
+      "min": 8,
+      "required": true
+    }
+  ]
 }

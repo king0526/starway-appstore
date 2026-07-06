@@ -1,23 +1,32 @@
 {
-  "name": "OpenClaw Agent",
+  "name": "OpenClaw Gateway",
   "id": "openclaw",
-  "available": false,
-  "short_desc": "OpenClaw CLI coding agent, delivered as a browser terminal (PLACEHOLDER — set real image).",
-  "author": "Starway",
-  "port": 7681,
+  "available": true,
+  "short_desc": "OpenClaw agent gateway — HTTP/WebSocket endpoint for channels and CLI coding agents.",
+  "author": "OpenClaw",
+  "port": 18789,
   "categories": [
     "ai",
     "development"
   ],
-  "description": "PLACEHOLDER ENTRY. OpenClaw is a CLI coding agent (not a native web app), so it is packaged as a container running the CLI behind a ttyd web terminal. To enable: build the image (CLI + ttyd) and push it to your Aliyun ACR, then set `image:` in docker-compose.yml, flip `available` to true, and bump `tipi_version`. See the repo README for the wrapper Dockerfile pattern.",
+  "description": "OpenClaw is a CLI coding-agent platform. This app runs its gateway (HTTP/WebSocket, 7 plugins: browser, canvas, device-pair, file-transfer, memory-core, phone-control, talk-voice) that clients and channels connect to. A shared gateway token is generated at install; clients must present it. Note: the gateway is an API/WebSocket endpoint, not a full browser dashboard. Config is not persisted in this build (starts with --allow-unconfigured).",
   "tipi_version": 1,
-  "version": "0.0.0",
-  "source": "https://github.com/starclaw/openclaw",
+  "version": "latest",
+  "source": "https://github.com/openclaw/openclaw",
   "exposable": true,
   "supported_architectures": [
-    "arm64",
-    "amd64"
+    "amd64",
+    "arm64"
   ],
   "dynamic_config": true,
-  "form_fields": []
+  "form_fields": [
+    {
+      "type": "random",
+      "label": "Gateway token (clients must present this to connect)",
+      "env_variable": "OPENCLAW_GATEWAY_TOKEN",
+      "encoding": "hex",
+      "min": 24,
+      "required": true
+    }
+  ]
 }

@@ -1,15 +1,17 @@
-# OpenClaw Agent (placeholder)
+# OpenClaw Gateway
 
-> **Not yet available.** This is a scaffold entry — `available` is `false` so it will not
-> appear in the market until you provide a real image.
+OpenClaw is a CLI coding-agent platform. This app runs its **gateway** — an HTTP/WebSocket
+endpoint (7 plugins: browser, canvas, device-pair, file-transfer, memory-core, phone-control,
+talk-voice) that channels and clients connect to.
 
-OpenClaw is a **CLI coding agent** (like Claude Code / OpenCode) that connects to your SkillHub
-private registry. It has no native web UI, so on a web app platform it is packaged as a
-container running the CLI behind a **ttyd web terminal** (browser-based shell).
+- Image: `openclaw/openclaw:latest`
+- Internal port: `18789`
+- A **gateway token** is generated at install; connecting clients must present it
+  (`OPENCLAW_GATEWAY_TOKEN`). The gateway refuses to bind on a non-loopback address without it.
 
-## To enable
-1. Build a wrapper image (see the Dockerfile sketch in `docker-compose.yml`): base + the
-   OpenClaw CLI install + `ttyd` on port `7681`.
-2. Push it to your Aliyun ACR.
-3. Set `image:` in `docker-compose.yml`, flip `available` to `true` in `config.json`, bump
-   `tipi_version`, commit, and Update App Stores.
+## Notes
+- The gateway is an API/WebSocket endpoint, **not a full browser dashboard** — "Open" shows the
+  gateway HTTP surface. Point your OpenClaw CLI / channels at it.
+- This build starts with `--allow-unconfigured` and does not persist config across reinstall.
+  For a persistent, fully-configured gateway (registry/auth/skills), run `openclaw setup` and
+  mount a data volume.

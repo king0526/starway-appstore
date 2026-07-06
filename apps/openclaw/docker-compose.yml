@@ -1,22 +1,17 @@
-# TODO(starway): replace with your built image and set config.json.available = true.
-#
-# OpenClaw is a CLI agent, so it is served through a ttyd web terminal.
-# Build an image from a Dockerfile like:
-#
-#   FROM node:20-alpine
-#   RUN apk add --no-cache ttyd bash git && npm i -g clawhub openclaw   # adjust to real install
-#   ENV CLAWHUB_REGISTRY=https://skillhub.your-company.com
-#   EXPOSE 7681
-#   CMD ["ttyd","-W","-p","7681","bash"]
-#
-# then push to your Aliyun ACR and reference it below.
 services:
   openclaw:
-    image: 'REPLACE_ME.aliyuncs.com/starway/openclaw-webterminal:latest'
+    image: 'openclaw/openclaw:latest'
+    command:
+      - node
+      - openclaw.mjs
+      - gateway
+      - '--allow-unconfigured'
+      - '--port'
+      - '18789'
+    environment:
+      - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
     x-runtipi:
       is_main: true
-      internal_port: '7681'
-    volumes:
-      - ${APP_DATA_DIR}/data:/root
+      internal_port: '18789'
 x-runtipi:
   schema_version: 2
